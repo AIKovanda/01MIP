@@ -1,0 +1,159 @@
+%\wikiskriptum{01DIFRnew}
+\documentclass[oneside,intlimits,reqno]{scrbook}
+ 
+%\usepackage{eucal}
+\usepackage{array}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{extarrows}
+\usepackage{graphicx,makeidx}
+\usepackage{a4wide}
+\usepackage{ragged2e}
+\usepackage[nottoc]{tocbibind}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{mathabx}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{relsize}
+\newlength\ubwidth
+\newcommand\parunderbrace[2]{\settowidth\ubwidth{$#1$}\underbrace{#1}_{\parbox{\ubwidth}{\scriptsize\RaggedRight#2}}}
+\newcommand{\equal}[1]{\mathop{\overset{#1}{\resizebox{\widthof{.{\ensuremath{\mathop{\overset{#1}{\mathop{=}}}}.}}}{\heightof{=}}{$\mathop{=}$}}}} 
+\usepackage[unicode,breaklinks=true,hypertexnames=false]{hyperref}
+%\usepackage{color}
+ 
+\hypersetup{
+  pdftitle={01MIP - Míra a pravděpodobnost},
+  pdfauthor={WIKI Skripta},
+  pdfsubject={Zápisky z přednášek MIP, FJFI ČVUT},
+  pdfkeywords={míra a pravděpodobnost},
+  bookmarksnumbered=true,
+  colorlinks=true,
+  pdfpagemode={UseOutlines}
+}
+ 
+%definice českých uvozovek
+\def\bq{\mbox{\kern.1ex\protect\raisebox{-1.3ex}[0pt][0pt]{''}\kern-.1ex}}
+\def\eq{\mbox{\kern-.1ex``\kern.1ex}}
+\gdef\uv#1{\bq #1\eq}
+ 
+ 
+\renewcommand{\d}{\mathrm{d}} 
+\newcommand{\m}{\mathlarger{\mathlarger{m}}} 
+\newcommand{\lphi}{\raisebox{.6ex}{$\mathlarger{\mathlarger{\varphi}}$}} 
+\newcommand{\E}{\mathrm{E}} %
+\renewcommand{\L}{\mathrm{L}} %
+\newcommand{\D}{\mathrm{D}} % 
+\newcommand{\FF}{\mathrm{F}} % 
+\newcommand{\PP}{\mathrm{P}} %
+\newcommand{\prostor}{(\Omega,\mathcal{A},\PP)} 
+\newcommand{\prostorm}{(\Omega,\mathcal{A},\mu)} 
+\newcommand{\dif}{\mathrm{d}} % diferenciál
+\newcommand{\me}{\mathrm{e}} % eulerovo číslo
+\newcommand{\mi}{\mathrm{i}} % imaginární jednotka
+\newcommand{\R}{\mathbb{R}} % množina reálných čísel
+\newcommand{\Rp}{\mathbb{R}^{+}} % množina kladných reálných čísel
+\newcommand{\Rm}{\mathbb{R}^{-}} % množina záporných reálných čísel
+\newcommand{\Rop}{\mathbb{R}_{0}^{+}} % množina nezáporných reálných čísel
+\renewcommand{\C}{\mathbb{C}} % množina komplexních čísel
+\newcommand{\Z}{\mathbb{Z}} % množina celých čísel
+\newcommand{\N}{\mathbb{N}} % množina přirozených čísel
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\PEX}{\PP^\X}
+\newcommand{\fex}{f_\X} 
+\newcommand{\mex}{\m_\X} 
+\newcommand{\FEX}{\FF_\X} 
+\newcommand{\Y}{\mathbb{Y}}
+\newcommand{\Aa}{\mathcal{A}}
+\newcommand{\Bb}{\mathcal{B}}
+\newcommand{\Nn}{\mathcal{N}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\PEY}{\PP^\mathbb{Y}}
+\newcommand{\fey}{f_\mathbb{Y}} 
+\newcommand{\longequal}{=\mathrel{\mkern-4mu}=} 
+\newcommand{\FEY}{\FF_\mathbb{Y}}
+\newcommand{\Q}{\mathbb{Q}} % množina přirozených čísel
+\newcommand{\Cc}{\mathcal{C}} % funkce třídy C (spojité)
+\newcommand{\Ll}{\mathcal{L}} % funkce třídy L (integrabilní)
+\newcommand{\I}{\mathcal{I}} % interval I
+%\newcommand{\J}{\mathcal{J}} % interval J
+\newcommand{\Ms}{\mathscr{M}} % množina M (fce stejně spojité a stejně omezené)
+\newcommand{\Fs}{\mathscr{F}} % množina F (fce spojité, stejně spojité a stejně lipschitzovské
+ 
+\newcommand{\tg}{\mathop{\mathrm{tg}}}
+\newcommand{\arctg}{\mathop{\mathrm{arctg}}}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\renewcommand{\Re}{\mathop{\mathrm{Re}}}
+\newcommand{\Ran}{\mathop{\mathrm{Ran}}}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+\newcommand{\supp}{\mathop{\mathrm{supp}}}
+\renewcommand{\Im}{\mathop{\mathrm{Im}}}
+\newcommand{\Cov}{\mathop{\mathrm{Cov}}}
+\newcommand{\Tr}{\mathop{\mathrm{Tr}}}
+\newcommand{\st}{\mathop{\mathrm{st}}}
+\newcommand{\LL}{\mathscr{L}}
+\newcommand{\sj}{\stackrel{s.j.}{\longrightarrow}}
+\newcommand{\Pto}{\stackrel{\PP}{\to}}
+\newcommand{\wto}{\stackrel{w}{\to}}
+\newcommand{\Dto}{\stackrel{\mathscr{D}}{\to}}
+\newcommand{\Lto}{\stackrel{(\mathscr{L})}{\to}}
+\newcommand{\CB}{C_B^{(0)}}
+\newcommand{\CBL}{C_B^{(L)}}
+\newcommand{\sjP}{\stackrel{s.j.~\PP}{\longrightarrow}}
+\newcommand{\Lp}{\stackrel{L_p}{\longrightarrow}}
+\newcommand{\overbar}[1]{\mkern 1mu\overline{\mkern-1mu#1\mkern-3mu}\mkern 3mu}
+\newcommand{\oxn}{\overbar{\rule{0ex}{1.8ex}X_n}}
+\newcommand{\oyn}{\overbar{\rule{0ex}{1.8ex}Y_n}}
+\newcommand{\omn}{\overbar{\rule{0ex}{1.3ex}\mu_n}}
+\newcommand{\osn}{\overbar{\rule{0ex}{1.95ex}\sigma_n^2}}
+\newcommand{\posl}{(X_j)_{j=1}^{+\infty}}
+\newcommand{\posln}{(X_n)_{n=1}^{+\infty}}
+\newcommand{\suminfty}{\sum\limits_{j=1}^{+\infty}}
+\newcommand{\suminftyk}{\sum\limits_{k=1}^{+\infty}}
+\newcommand{\suminftym}{\sum\limits_{m=1}^{+\infty}}
+\newcommand{\suminftykn}{\sum\limits_{k=1}^{n}}
+\newcommand{\sumjn}{\sum\limits_{j=1}^{n}}
+
+
+\newcommand{\salg}{$\sigma$-algebra}
+
+\newcommand{\dom}[1]{\mathop{\mathrm{Dom} (#1)}} % definiční obor
+ 
+\newcommand{\mat}[1]{\mathbf #1}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\nor}[1]{\left\|#1\right\|}
+\newcommand{\Br}[1]{\Bigl(#1\Bigr)}
+\newcommand{\br}[1]{\bigl(#1\bigr)}
+
+\newcommand{\COL}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}   %sloupcový vektor 2x1 VELKÝ
+\newcommand{\col}[2]{{#1 \choose #2}} %sloupcový vektor 2x1 MALÝ nebo kombinační číslo
+ 
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\rho}{\varrho}
+\newcommand{\ol}{\overline}
+\newcommand{\ub}{\underbrace}
+\newcommand{\sm}{\smallsetminus}
+\renewcommand{\emptyset}{\font\cmsy = cmsy10 at 12pt
+	\hbox{\cmsy \char 59}}
+
+ 
+\theoremstyle{definition}
+\newtheorem{define}{Definice}[chapter]
+ 
+\theoremstyle{plain}
+\newtheorem{theorem}[define]{Věta}
+\newtheorem{lemma}[define]{Lemma}
+\newtheorem{dusl}[define]{Důsledek}
+\newtheorem{corollary}[define]{Tvrzení}
+\renewcommand{\proofname}{Důkaz}
+ 
+\theoremstyle{remark}
+\newtheorem{example}[define]{\textsc{Příklad}}
+\newtheorem{remark}[define]{\textsc{Poznámka}}
+ 
+
+\renewcommand{\indexname}{Rejstřík}
+
+\frenchspacing

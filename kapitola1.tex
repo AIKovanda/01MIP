@@ -1,0 +1,295 @@
+\chapter{Axiomy pravděpodobnostního prostoru}
+Něco málo z historie:
+
+ I) R. von Mises (Relativní frekvence) 
+ \begin{itemize}
+ 	
+\item realizace a opakování experimentu
+\item pozorujeme jev A
+\item def $\PP(A)=\frac{n_A}{n} \longrightarrow \PP'(A)$ (lepší definice pravděpodobnosti)
+\item (K. Pearson hodil 24000 krát mincí, přičemž mu padlo 12012 líců)
+\end{itemize}
+II) Laplaceova definice pravděpodobnosti
+ \begin{itemize}
+\item experiment není nutně realizovaný
+\item máme jev A, definujeme $\PP(A)=\frac{z_A}{z}$, kde $z_A$ je počet způsobů výsledků experimentu, kdy jev A skutečně nastal a $z$ je počet všech způsobů výsledků experimentu
+\item omezení: $0<z<+\infty$, navzájem se vylučující způsoby (kostka nemůže být zároveň modrá i zelená), způsoby jsou "stejně pravděpodobné", \textit{\{možné způsoby\}} $\in \Omega$
+\item variace, kombinace, permutace (bez opakování, s opakováním), ...
+\end{itemize}
+III) Geometrická
+\begin{itemize}
+	\item Označíme $\Omega$ množinu všech možných výsledků experimentu, $A$ jako jev. 
+	
+Předpokládejme, že existuje zobrazení $(\Omega,A)\longrightarrow (\Omega^*,A^*)$, kde $\Omega^*$ je měřitelný (fázový) prostor vybavený mírou $\mu$, $A\subset \Omega$ a $A^* \subset \Omega^*$. Potom definujeme 
+$$ \PP(A)=\frac{\mu A^*}{\mu \Omega^*}$$
+Toto zobrazení je bijekce a musí zachovat rovnoměrnost míry.
+\end{itemize}
+IV) jevy a operace s jevy: $\Omega$ jako základní množina (množina všech elementárních výsledků experimentu), $\omega \in \Omega$ je elementární výsledek, $A \subset \Omega$ jev. Pokud $A=\emptyset$, potom A nazveme jev nemožný. A nastal, pokud nastal takový $\omega$, že $\omega \in A$. $A=\Omega$ nazveme jev jistý.
+\begin{theorem}
+Definujeme základní operace: 
+\begin{enumerate}
+\item $A^c$ je komplementární jev (opačný $\bar{A}$), $\omega \in A^c \Leftrightarrow \omega \notin A$
+\item $ A \subset B$, $(\omega \in A ~\Rightarrow~ \omega \in B)$
+\item $ A=B$, $(A \subset B) \wedge (B \subset A)$
+\item $A \cap B$, jev, kdy A a B nastane současně
+\item $A \cap B = \emptyset$, říkáme, že A,B jsou neslučitelné(disjunktní)
+\item $A - B = A \cap B^c$
+\item $A \cup B$ označuje jev, kdy nastává A nebo B ($\omega \in A \cup B$, pokud $\omega \in A \vee \omega \in B$)\newline pro neslučitelné $A,B$  značíme $A+B$, pro disjunktní $A_j$ dále  $\bigcup\limits_{j=1}^{+\infty}  A_j = \sum\limits_{j=1}^{+\infty}A_j$
+\item $A \bigtriangleup B=(A-B)+(B-A)$
+\item $ A \cap A^c = \emptyset,~A\cup A^c = \Omega,~A \cap \Omega = A,~A \cap \emptyset = \emptyset $ \end{enumerate}Platí tedy komutativita, distribuce, asociace apod.
+\end{theorem}
+\begin{remark}
+De Morgan: $(A_j)_{j=1}^{+\infty}$ jevy $~\Rightarrow~ \bigcup\limits_{j=1}^{+\infty}  A_j = \Bigl(\bigcap\limits_{j=1}^{+\infty} A_j^c\Bigr)^c $
+\end{remark}
+\begin{define}
+ Buď $\Omega$ základní množina. Nechť dále $\Aa  \subset 2^\Omega$ splňuje následující axiomy:
+ \begin{enumerate}[1)]
+ 	\item $\Omega \in \Aa $
+	\item $\forall A \in \Aa  ~\Rightarrow~ A^c \in \Aa $
+	\item $(A_j)_{j=1}^{+\infty} \subset \Aa  ~\Rightarrow~ \bigcup\limits_{j=1}^{+\infty} A_j \in \Aa $
+\end{enumerate}
+~~Potom $\Aa $ nazveme $\sigma$\textit{-algebrou} (jevů). Pokud platí
+\begin{enumerate}[3*)]
+	\item $(A_j)_{j=1}^n \subset \Aa  ~\Rightarrow~ \bigcup\limits_{j=1}^n A_j \in \Aa $,
+\end{enumerate}
+~~pak $\Aa $ nazveme \textit{algebra}.
+
+\end{define}
+\begin{remark}
+	\begin{enumerate}
+		\item 	$\sigma$-algebru zavádíme, protože $2^\Omega$ je moc obsáhlá a mohlo by se stát, že bychom neměli možnost volit netriviální $\PP$. My potřebujeme, aby $\PP$ nějak odpovídala skutečnosti a experimentu.
+		\item Díky druhému bodu lze ekvivalentně přepsat první bod do tvaru $\emptyset\in\Aa$.
+	\end{enumerate}
+
+\end{remark}
+\begin{theorem}
+	Nechť $\Aa $ je $\sigma\textit{-algebra}$ a $\Omega$ základní množina. Potom platí, že 
+	\begin{enumerate}[1)]
+	\item $\emptyset \in \Aa $,
+	\item $A,B \in \Aa  ~\Rightarrow~ A-B \in \Aa $,
+	\item $\bigcup\limits_{j=1}^n A_j \in \Aa  ~~~\forall A_j \in \Aa $,
+	\item $(A_j)_{j=1}^{+\infty} \subset \Aa  ~\Rightarrow~ \bigcap\limits_{j=1}^{+\infty} A_j \in \Aa $,
+	\item $\bigcap\limits_{j=1}^n A_j \in \Aa ~~~\forall A_j \in \Aa $.
+\end{enumerate}
+	\begin{proof}
+		Důkaz je ponechán čtenáři.
+	\end{proof} 
+\end{theorem}
+
+\newpage
+\begin{define}
+	Mějme $\Omega, \Aa $ jako $\sigma$-algebru. Potom libovolnou funkci $\PP: \Aa \to\R$ splňující axiomy
+	\begin{enumerate}[K1)]
+	\item $\PP(\Omega)=1$
+	\item $(\forall A \in \Aa )(\PP(A)\geq 0)$
+	\item ($\sigma$-aditivita):~$\PP\Bigl(\sum\limits_{j=1}^{+\infty} A_j\Bigr) = \sum\limits_{j=1}^{+\infty} \PP(A_j)~~~\forall (A_j)_{j=1}^{+\infty} \subset \Aa $ disjunktní
+\end{enumerate}	
+nazveme \textbf{pravděpodobnostní mírou} (pravděpodobností) na $(\Omega,\Aa )$. Pokud není splněna pouze podmínka K1), potom ji nazveme \textbf{mírou obecnou} a značíme $\mu$.
+
+\end{define} 
+
+\begin{theorem}
+	Mějme $\prostor$. Potom pro pravděpodobnostní míru platí
+	\begin{enumerate}
+		\item $\PP(\emptyset)=0$
+		\item $\PP\Bigl(\sum\limits_{j=1}^{n}A_j\Bigr)=\sum\limits_{j=1}^{n}\PP(A_j)$ pro $A_j$ disjunktní (aditivita $\PP$)
+		\item $A \subset B ~\Rightarrow~ \PP(A) \leq \PP(B)$ (monotonie $\PP$)
+		\item $A \subset B ~\Rightarrow~ \PP(B-A)=\PP(B)-\PP(A)$
+		\item $(\forall A \in \Aa )(\PP(A)\leq 1)$ (omezená, normovaná na 1)
+		\item $(\forall A \in \Aa )\bigl(\PP(A^c)=1-\PP(A)\bigr)$ (komplementarita)
+	\end{enumerate}
+\begin{proof}
+	\begin{enumerate}
+		\item Platí, že $(\forall j \in \N)(A_j=\emptyset)  $.
+		Z K3) plyne, že $\PP\Bigl(\sum\limits_{j=1}^{+\infty}\emptyset\Bigr) = \sum\limits_{j=1}^{+\infty}\PP(\emptyset) ~\Rightarrow~ \PP(\emptyset) =0$
+		
+		\item $\PP\Bigl(\sum\limits_{j=1}^{n}A_j\Bigr)=\PP\Bigl(\sum\limits_{j=1}^{+\infty}A_j\Bigr)=\sum\limits_{j=1}^{+\infty}\PP(A_j)=\sum\limits_{j=1}^{n}\PP(A_j)$, kde $(\forall j\geq n+1)(A_j=\emptyset) $.
+		
+		\item Platí, že pokud $A \subset B$, pak ze vztahu $B=A+(B-A)$ vyplývá
+		$$\PP(B)\equal{K2}\PP(A)+\underbrace{\PP(B-A)}_{\geq 0} \geq \PP(A)$$
+		
+		\item Triviální.
+		
+		\item $A \in \Aa $ $$A \subset \Omega ~\Rightarrow~ \PP(A) \leq \PP(\Omega)=1$$
+		
+		\item $A \subset \Omega$
+		$$\PP(A^c)=\PP(\Omega \setminus A) =\underbrace{\PP(\Omega)}_{=1}-\PP(A)$$
+	\end{enumerate}
+
+\end{proof} 	
+\end{theorem}
+\begin{remark}
+Mějme $\prostorm$ a obecnou míru $\mu$, kde $(\mu(\Omega)=+\infty) $.
+Potom $\mu$ není komplementární (neplatí 4,5,6).
+\end{remark}
+\begin{theorem}
+	Mějme $\prostor$. Pak platí, že
+	\begin{enumerate}
+		\item $\PP(A \cup B) = \PP(A)+\PP(B)-\PP(A \cap B)~~~\forall A,B \in \Aa $
+%		\item $\PP(A \cup B \cup C)=..?$ DCv
+		\item Booleova nerovnost:
+		\[
+		 \PP\Bigl(\bigcup\limits_{j=1}^{n,+\infty} A_j\Bigr) \leq \sum\limits_{j=1}^{n,+\infty} \PP(A_j)~~~\forall (A_j)_{j=1}^{n,+\infty} \subset \Aa
+		\]
+	\end{enumerate}
+\begin{proof}
+	\begin{enumerate}
+	\item \[
+	\begin{split}
+	\PP(A \cup B)&=\PP\Bigl(A+(B \cap A^c)\Bigr) = \PP\Bigl(A+\bigl(B-(A \cap B)\bigr)\Bigr) = \\ &= \PP(A)+\PP\Bigl(B-(A \cap B)\Bigr)=\PP(A)+\PP(B)-\PP(A \cap B)
+	\end{split}
+	\]
+	\item \begin{enumerate}[a)]\item $n=2$: $$\PP(A_1 \cup A_2)=\PP(A_1)+\PP(A_2)-\underbrace{\PP(A_1 \cap A_2)}_{\geq 0} \leq \PP(A_1)+\PP(A_2)$$
+	\item $n ~\to~ n+1$: $$\PP\Bigl( \bigcup_{j=1}^{n+1} A_j \Bigr) =\PP\Bigl(\bigcup_{j=1}^{n} A_j \cup A_{n+1}\Bigr) \leq \PP\Bigl(\bigcup_{j=1}^{n} A_j\Bigr)+\PP(A_{n+1}) \stackrel{\text{I.P.}}{\leq} \sum\limits_{j=1}^{n+1}\PP(A_j)$$
+\end{enumerate}\end{enumerate}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}
+	Mějme $\prostor$. Potom pokud
+	\begin{enumerate}[	a)]
+		\item $A_n \searrow A~\Bigl($tzn. $A_n \supset A_{n+1},~A=\bigcap\limits_{n=1}^{+\infty}A_n\Bigr)$, pak
+		$ \lim\limits_{n \to +\infty} \PP(A_n)=\PP(A)$ $(\PP$ je spojitá shora$)$
+		\item $A_n \nearrow A~\Bigl($tzn. $A_n \subset A_{n+1},~A=\bigcup\limits_{n=1}^{+\infty}A_n\Bigr)$, pak
+		$ \lim\limits_{n \to +\infty} \PP(A_n)=\PP(A)$ $(\PP$ je spojitá zdola$)$
+	\end{enumerate}
+	\begin{proof}~
+		\begin{enumerate}[a)]
+			\item \begin{enumerate}[1.]
+				\item  $A=\emptyset,~A_n \searrow \emptyset$. Definujeme $B_n=A_n-A_{n+1}$, tedy $A_n=\sum\limits_{j=n}^{+\infty} B_j$. Potom	
+				$$\PP(A_n)=\PP\Bigl(\sum\limits_{j=n}^{+\infty} B_j\Bigr)\equal{K3}\sum\limits_{j=n}^{+\infty} \PP(B_j) \to 0$$	
+				\item$A \neq \emptyset$. Potom $A_n \searrow A \neq \emptyset$, tedy 
+				$$(A_n \setminus A) \searrow  \emptyset ~\Rightarrow~ \PP(A_n \setminus A) \to 0 ~\Rightarrow~ \PP(A_n)-\PP(A) \to 0$$
+			\end{enumerate}
+		\item  $\PP$ je spojitá zdola $\Leftrightarrow$ $\PP$ je spojitá shora (díky komplementaritě $\PP$)
+		\end{enumerate}
+	\end{proof}
+\end{theorem}
+\begin{define}
+	\label{ppp}
+	Nechť $A,B \in \Aa ,~\PP(B)>0$. Potom definujeme 
+	\[
+	\PP(A|B):=\frac{\PP(A \cap B)}{\PP(B)}
+	\] jako \textbf{podmíněnou pravděpodobnost} jevu A za předpokladu jevu B.
+
+\end{define}
+\begin{remark}
+		Musíme ověřit korektnost: máme B., tedy $\PP(\cdot | B): \Aa\to\R$ je pravděpodobnostní míra (splňuje K1, K2, K3).	
+\end{remark}
+
+\begin{theorem}[Součinové pravidlo] Nechť $ A_1,...,A_n \in \Aa $ a zároveň $\PP(A_1 \cap ... \cap A_{n-1})>0$. Potom
+	\[
+	\PP(A_1 \cap... \cap A_n)=\PP(A_1)\PP(A_2|A_1)\PP(A_3|A_2,A_1)...\PP(A_n|A_1,...,A_{n-1})
+	\] 
+	\begin{proof} Indukce:
+		\begin{enumerate}
+			\item $n=2$:
+			$$\PP(A_1 \cap A_2)=\PP(A_1)\PP(A_2|A_1) $$
+			\item $n \to n+1$: $$\PP(A_1 \cap ... \cap A_{n+1})=\PP(A_1 \cap ... \cap A_n)\PP(A_{n+1}|A_1,...,A_n)$$
+			Potom stačí použít indukční předpoklad. 
+		\end{enumerate}	
+	\end{proof}
+\end{theorem}
+\begin{theorem}[O úplném rozkladu] 
+	\label{Ouprozkladu}
+	Nechť $(H_k)_{k=1}^{n,+\infty}$ tvoří tzv. úplný rozklad $\Omega$, tzn. $H_k$ jsou navzájem neslučitelné, dále $\PP(H_k)>0$, $\PP\Bigl({\sum\limits_{j=1}^{n,+\infty}H_k}\Bigr)=1$ (nemusí zahrnovat množiny s~nulovou pravděpodobností), $A \in \Aa $. Potom 
+	\[
+	\PP(A) = \sum\limits_{k=1}^{n,+\infty}\PP(A|H_k)\PP(H_k)
+	\]
+	\begin{proof}
+	\[
+	\begin{split}
+	\PP(A) &=\PP\left((A \cap \sum\limits_{k=1}^{n,+\infty}H_k)+A \cap (\sum\limits_{k=1}^{n,+\infty}H_k)^c \right)=\PP\left(A \cap \sum\limits_{k=1}^{n,+\infty}H_k \right)+0 = \\  &=\PP\left(\sum\limits_{k=1}^{n,+\infty}(A \cap H_k)\right)  =
+		\sum\limits_{k=1}^{n,+\infty}\PP(A \cap H_k)  \equal{\ref{ppp}}\sum\limits_{k=1}^{n,+\infty}\PP(A|H_k)\PP(H_k)
+	\end{split}
+	\]
+	\end{proof}
+\end{theorem}
+
+\begin{theorem}[Bayesova,1763] 
+	Mějme $(H_k)_{k=1}^{n,+\infty}$ jako úplný rozklad $\Omega,~A \in \Aa , ~\PP(A)>0$. Potom $\forall k\in\N$ platí, že 
+	\[
+	\PP(H_k|A)=\frac{\PP(A|H_k)\PP(H_k)}{\sum\limits_{j=1}^{n,+\infty}\PP(A|H_j)\PP(H_j)}
+	\]
+	\begin{proof}
+		$$\PP(H_k|A)=\frac{\PP(H_k\cap A)}{\PP(A)}\equal{\ref{Ouprozkladu}}\frac{\PP(A|H_k)\PP(H_k)}{\sum\limits_{j=1}^{n,+\infty}\PP(A|H_j)\PP(H_j)}$$
+	\end{proof}
+\end{theorem}
+
+\begin{define}
+	Nechť $\mathcal{C}$ je systém jevů z $\Aa $ ($\Aa $-měřitelné množiny). Pak říkáme, že jevy v $\mathcal{C}$ jsou (vzájemně) \textbf{nezávislé}, pokud $\forall k \in \N,~\forall (A_j)_{j=1}^k \subset \mathcal{C}$ platí, že
+	\[
+	 \PP\Bigl( \bigcap\limits_{j=1}^{k} A_j \Bigr) = \prod\limits_{j=1}^{k}\PP(A_j).
+	\]
+\end{define}
+\begin{remark}
+	\begin{enumerate}[a)]
+		\item Pro $\prostorm$ platí, že $\mu(A_j)<+\infty$.
+		\item Pokud $|\mathcal{C}|=n$, pak stačí ověřit podmínku pro $k=n$.
+		\item Jevy v $\mathcal{C}$ po dvou nezávislé nejsou nutně vzájemně nezávislé pro $n\geq 3$. Představme si například hod čtyřstěnem. Máme tedy 4 možné výsledky, $\Omega=\{\omega_1,\omega_2,\omega_3,\omega_4\}$, pro které zkoumáme jevy $A=\{\omega_1,\omega_2\} \subset \Aa =2^c,~B=\{\omega_1,\omega_3\}$ a $C=\{\omega_1,\omega_4\}$. Potom ale
+		 $$\PP(A)=\PP(B)=\PP(C)=\frac{1}{2}$$
+		$$\PP(A \cap B)=\PP(A \cap C)=\PP(B \cap C)=\frac{1}{4}$$
+		$$\PP(A \cap B \cap C)= \frac{1}{4} \neq \frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2} $$
+	\end{enumerate}
+\end{remark}
+\begin{theorem}
+Pokud $A,B$ jsou neslučitelné jevy, pak $A,B$ jsou nezávislé $\Leftrightarrow \PP(A)\PP(B)=0$.
+\end{theorem}
+\begin{theorem}
+Mějme	$A, B \in \Aa $ tak, že $\PP(B)=0$ nebo $\PP(B)=1$. Potom A,B jsou nezávislé jevy.
+\end{theorem}
+\begin{theorem}
+	$A,B \in \Aa $ jsou nezávislé právě tehdy, když $A,B^c$ jsou nezávislé.
+	\begin{proof}
+		$\PP(A \cap B^c) = \PP\bigl(A \setminus (A \cap B)\bigr)=\PP(A)-\PP(A\cap B)= \PP(A)\bigl(1-\PP(B)\bigr)=\PP(A)\PP(B^c)$
+	\end{proof}
+\end{theorem}
+\begin{dusl}
+	V $\mathcal{C}$ lze zaměnit jevy za komplementární jevy a nezávilost zůstane v platnosti.
+\end{dusl}
+\begin{theorem}
+Pokud $A,B$ jsou nezávislé a $\PP(B)>0$, tak $\PP(A|B)=\PP(A)$.
+\begin{proof}
+		$\PP(A|B)=\frac{\PP(A\cap B)}{\PP(B)}=\PP(A)$
+	\end{proof}
+\end{theorem}
+\begin{theorem}
+	Mějme $A,B \in \Aa ,~\PP(B)>0,~\PP(A|B)=\PP(A)$. Pak A,B jsou nezávislé.
+	\begin{proof}
+		$\PP(A\cap B)=\PP(A|B)\PP(B)=\PP(A)\PP(B)$, tedy A,B jsou nezávislé.
+	\end{proof}
+\end{theorem}
+\begin{define} 
+	Mějme $\mathcal{C}_1$ a $\mathcal{C}_2$ jako soubory jevů. Říkáme, že $\mathcal{C}_1,\mathcal{C}_2$ jsou nezávislé, pokud \newline $\forall A \in \mathcal{C}_1,~\forall B \in \mathcal{C}_2 $ jsou A,B nezávislé. $(C_j)_{j=1}^{n,+\infty}$ jsou nezávislé, pokud $\forall k\in\N,~\forall i \in \hat{k},~ \forall A_{j_i} \in \mathcal{C}_{j_i}$  platí, že $A_{j_1},...,A_{j_k}$ jsou nezávislé.
+\end{define}
+\begin{define}
+	Mějme $\prostor$, $(A_n)_{n=1}^{+\infty} \subset \Aa $. Definujeme $$\limsup\limits_{n \to +\infty} A_n = \lim\limits_{n \to +\infty} \bigcup\limits_{k\geq n} A_k=\bigcap\limits_{n \geq 1} \bigcup\limits_{k \geq n} A_k = \{A_n\text{ i.o. (infinitely often)}\}$$
+\end{define}
+\begin{remark}
+ $\omega \in \bigcap\limits_{n \geq 1} \bigcup\limits_{k \geq n} A_k ~\stackrel{\forall n \geq 1}{\Longrightarrow}~ \omega \in \bigcup\limits_{k \geq n} A_k ~\Rightarrow~$ ($\omega$ je v nekonečně mnoha $A_k$).
+\end{remark}
+\newpage
+\begin{theorem}[Borel-Cantelliho lemma]
+	Buď $(A_n)_{n \geq 1} \in \Aa $.
+	\begin{enumerate}[a)]
+		\item Pokud $\sum\limits_{n=1}^{+\infty} \PP(A_n)<+\infty$, pak ~$ \PP\br{\{A_n\text{ i.o.}\}}=0$.
+		\item Pokud $(A_n)_{n=1}^{+\infty}$ jsou stochasticky nezávislé, pak $$\sum\limits_{n=1}^{+\infty} \PP(A_n)=+\infty ~\Rightarrow~ \PP\br{\{A_n\text{ i.o.}\}}=1.$$
+	\end{enumerate}
+\begin{proof}
+	\begin{enumerate}[a)]
+		\item $$\PP\br{\{A_n\text{ i.o.}\}}=\PP\underbrace{\left( \bigcap\limits_{n \geq 1} \bigcup\limits_{k \geq n} A_k\right)}_{\subset \bigcup\limits_{k \geq n} A_k} \stackrel{\forall n\in\N}{\leq} \PP\Bigl( \bigcup\limits_{k \geq n} A_k\Bigr) \stackrel{\text{Booleova nerovnost}}{\leq}\sum\limits_{k \geq n}\PP(A_k)$$
+		$$ \PP\left(\{A_n\text{ i.o.}\}\right) \leq \inf\limits_{n \in \N} \underbrace{\sum\limits_{k \geq n}\PP(A_k)}_{\to 0  }=0$$
+		
+		\item 
+		$$ \PP\Bigl(\{A_n\text{ i.o.}\}^c\Bigr) = \PP\Bigl( \bigcap\limits_{n \geq 1} \bigcup\limits_{k \geq n} A_k\Bigr)^c \equal{\text{De~Morgan}} \PP\Bigl( \bigcup\limits_{n \geq 1} \bigcap\limits_{k \geq n} A_k^c\Bigr) \leq \sum\limits_{n=1}^{+\infty} \PP\Bigl(  \bigcap\limits_{k \geq n} A_k^c\Bigr)$$ 
+		\[
+		\begin{split}\PP\Bigl(  \bigcap\limits_{k \geq n} A_k^c\Bigr)&\leq \PP\Bigl(  \bigcap\limits_{k = n}^{l} A_k^c\Bigr)\equal{\text{nezávislost~}  A_n}\prod\limits_{k=n}^l \PP(A_k^c)=\prod\limits_{k=n}^l\Bigl(1-\PP(A_k)\Bigr)\leq \\ &\leq 
+		\begin{array}{|l|}Odhad: \\
+		1-x\leq \me^{-x}
+		\end{array} 
+		 \leq \prod\limits_{k=n}^l \me^{-\PP(A_k)}=\me^{-\sum\limits_{k=n}^l\PP(A_k)} ~\stackrel{l \to +\infty}{\longrightarrow} 0 
+		\end{split}
+		\]
+	\end{enumerate}
+\end{proof}
+\end{theorem}
